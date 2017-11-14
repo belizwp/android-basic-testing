@@ -1,18 +1,25 @@
 package cc.somkiat.basicunittesting;
 
 import cc.somkiat.basicunittesting.exception.BaseValidationException;
+import cc.somkiat.basicunittesting.exception.EmptyNameException;
 import cc.somkiat.basicunittesting.exception.NullNameException;
 
 public class NameValidator {
 
-    public boolean validate(String name) throws BaseValidationException {
-        return !isNull(name);
+    public void validate(String name) throws BaseValidationException {
+        isNull(name);
+        isEmpty(name);
     }
 
-    public boolean isNull(String name) throws NullNameException {
+    public void isNull(String name) throws NullNameException {
         if (name == null) {
             throw new NullNameException("Name is null");
         }
-        return true;
+    }
+
+    public void isEmpty(String name) throws EmptyNameException {
+        if (name.isEmpty()) {
+            throw new EmptyNameException("Name is empty");
+        }
     }
 }

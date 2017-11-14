@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import cc.somkiat.basicunittesting.exception.BaseValidationException;
+import cc.somkiat.basicunittesting.exception.EmptyNameException;
 import cc.somkiat.basicunittesting.exception.NullNameException;
 
 public class NameValidationFailTest {
@@ -20,6 +21,15 @@ public class NameValidationFailTest {
         thrown.expectMessage("Name is null");
 
         String name = null;
+        nameValidator.validate(name);
+    }
+
+    @Test
+    public void shouldThrowEmptyNameExceptionWhenNameIsEmpty() throws BaseValidationException {
+        thrown.expect(EmptyNameException.class);
+        thrown.expectMessage("Name is empty");
+
+        String name = "";
         nameValidator.validate(name);
     }
 
