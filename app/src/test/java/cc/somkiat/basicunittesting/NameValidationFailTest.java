@@ -43,4 +43,13 @@ public class NameValidationFailTest {
         nameValidator.validate(name);
     }
 
+    @Test
+    public void shouldThrowNameContainNonAlphabetExceptionWhenNameContainPunctuation() throws BaseValidationException {
+        thrown.expect(NameContainsNonAlphabet.class);
+        thrown.expectMessage("Name contains non alphabet character");
+
+        String name = "[GM]lnwza";
+        nameValidator.validate(name);
+    }
+
 }
