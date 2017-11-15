@@ -2,6 +2,7 @@ package cc.somkiat.basicunittesting;
 
 import cc.somkiat.basicunittesting.exception.BaseValidationException;
 import cc.somkiat.basicunittesting.exception.EmptyNameException;
+import cc.somkiat.basicunittesting.exception.NameContainsNonAlphabet;
 import cc.somkiat.basicunittesting.exception.NullNameException;
 
 public class NameValidator {
@@ -9,6 +10,7 @@ public class NameValidator {
     public void validate(String name) throws BaseValidationException {
         isNull(name);
         isEmpty(name);
+        isNameContainsNonAlphabet(name);
     }
 
     public void isNull(String name) throws NullNameException {
@@ -20,6 +22,14 @@ public class NameValidator {
     public void isEmpty(String name) throws EmptyNameException {
         if (name.isEmpty()) {
             throw new EmptyNameException("Name is empty");
+        }
+    }
+
+    public void isNameContainsNonAlphabet(String name) throws NameContainsNonAlphabet {
+        String regex = "^[A-Za-z]+$";
+
+        if (!name.matches(regex)) {
+            throw new NameContainsNonAlphabet("Name contains non alphabet character");
         }
     }
 }
