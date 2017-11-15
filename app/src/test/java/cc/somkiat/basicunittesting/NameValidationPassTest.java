@@ -39,4 +39,10 @@ public class NameValidationPassTest {
         String name = "Belizwp";
         assertTrue(nameValidator.validate(name));
     }
+
+    @Test
+    public void allLowerCaseFullNameShouldPass() throws BaseValidationException {
+        String name = "nakarin kakanumporn";
+        assertTrue(nameValidator.validate(name));
+    }
 }
