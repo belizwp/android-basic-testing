@@ -69,4 +69,13 @@ public class EmailValidationFailTest {
         String email = "belizwp@@live.com";
         emailValidator.validate(email);
     }
+
+    @Test
+    public void shouldThrowInvalidEmailExceptionWhenEmailHasSpecialChar() throws BaseValidationException {
+        thrown.expect(InvalidEmailException.class);
+        thrown.expectMessage("Email is invalid");
+
+        String email = "b\"e(l)i,z[w]p@live.com";
+        emailValidator.validate(email);
+    }
 }
