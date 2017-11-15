@@ -45,4 +45,10 @@ public class NameValidationPassTest {
         String name = "Nakarin Kakanumporn";
         assertTrue(nameValidator.validate(name));
     }
+
+    @Test
+    public void fullNameWithTitleShouldPass() throws BaseValidationException {
+        String name = "Mr. Nakarin Kakanumporn";
+        assertTrue(nameValidator.validate(name));
+    }
 }

@@ -27,7 +27,7 @@ public class NameValidator {
     }
 
     public void isNameContainsNonAlphabet(String name) throws NameContainsNonAlphabet {
-        String regex = "^[A-Za-z ]+$";
+        String regex = "^[A-Za-z .]+$";
 
         if (!name.matches(regex)) {
             throw new NameContainsNonAlphabet("Name contains non alphabet character");
