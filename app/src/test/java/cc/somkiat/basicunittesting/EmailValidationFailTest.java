@@ -51,4 +51,13 @@ public class EmailValidationFailTest {
         String email = "Belize";
         emailValidator.validate(email);
     }
+
+    @Test
+    public void shouldThrowInvalidEmailExceptionWhenEmailIsNoAtSign() throws BaseValidationException {
+        thrown.expect(InvalidEmailException.class);
+        thrown.expectMessage("Email is invalid");
+
+        String email = "Belize.email.com";
+        emailValidator.validate(email);
+    }
 }
