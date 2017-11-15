@@ -16,4 +16,9 @@ public class EmailValidationPassTest {
         assertTrue(emailValidator.validate(email));
     }
 
+    @Test
+    public void emailWithoutDotAtDomainShouldPass() throws BaseValidationException {
+        String email = "belizwp@localhost";
+        assertTrue(emailValidator.validate(email));
+    }
 }
