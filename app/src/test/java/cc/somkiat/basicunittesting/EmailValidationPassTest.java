@@ -21,4 +21,10 @@ public class EmailValidationPassTest {
         String email = "belizwp@localhost";
         assertTrue(emailValidator.validate(email));
     }
+
+    @Test
+    public void emailWithManyDotAtDomainShouldPass() throws BaseValidationException {
+        String email = "belizwp@strange.example.com";
+        assertTrue(emailValidator.validate(email));
+    }
 }
