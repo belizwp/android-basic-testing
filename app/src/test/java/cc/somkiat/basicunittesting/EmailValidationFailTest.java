@@ -6,6 +6,7 @@ import org.junit.rules.ExpectedException;
 
 import cc.somkiat.basicunittesting.exception.BaseValidationException;
 import cc.somkiat.basicunittesting.exception.EmptyEmailException;
+import cc.somkiat.basicunittesting.exception.InvalidEmailException;
 import cc.somkiat.basicunittesting.exception.NullEmailException;
 
 public class EmailValidationFailTest {
@@ -33,4 +34,12 @@ public class EmailValidationFailTest {
         emailValidator.validate(email);
     }
 
+    @Test
+    public void shouldThrowInvalidEmailExceptionWhenEmailIsWord() throws BaseValidationException {
+        thrown.expect(InvalidEmailException.class);
+        thrown.expectMessage("Email is invalid");
+
+        String email = "Belize";
+        emailValidator.validate(email);
+    }
 }
