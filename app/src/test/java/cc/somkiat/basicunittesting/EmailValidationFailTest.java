@@ -35,6 +35,15 @@ public class EmailValidationFailTest {
     }
 
     @Test
+    public void shouldThrowEmptyEmailExceptionWhenEmailIsEmptySpace() throws BaseValidationException {
+        thrown.expect(EmptyEmailException.class);
+        thrown.expectMessage("Email is empty");
+
+        String email = "             ";
+        emailValidator.validate(email);
+    }
+
+    @Test
     public void shouldThrowInvalidEmailExceptionWhenEmailIsWord() throws BaseValidationException {
         thrown.expect(InvalidEmailException.class);
         thrown.expectMessage("Email is invalid");
