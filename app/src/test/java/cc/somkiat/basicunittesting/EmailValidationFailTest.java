@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import cc.somkiat.basicunittesting.exception.BaseValidationException;
+import cc.somkiat.basicunittesting.exception.EmptyEmailException;
 import cc.somkiat.basicunittesting.exception.NullEmailException;
 
 public class EmailValidationFailTest {
@@ -20,6 +21,15 @@ public class EmailValidationFailTest {
         thrown.expectMessage("Email is null");
 
         String email = null;
+        emailValidator.validate(email);
+    }
+
+    @Test
+    public void shouldThrowEmptyEmailExceptionWhenEmailIsEmpty() throws BaseValidationException {
+        thrown.expect(EmptyEmailException.class);
+        thrown.expectMessage("Email is empty");
+
+        String email = "";
         emailValidator.validate(email);
     }
 
