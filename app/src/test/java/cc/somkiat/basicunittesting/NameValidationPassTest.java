@@ -41,8 +41,8 @@ public class NameValidationPassTest {
     }
 
     @Test
-    public void allLowerCaseFullNameShouldPass() throws BaseValidationException {
-        String name = "nakarin kakanumporn";
+    public void fullNameShouldPass() throws BaseValidationException {
+        String name = "Nakarin Kakanumporn";
         assertTrue(nameValidator.validate(name));
     }
 }
