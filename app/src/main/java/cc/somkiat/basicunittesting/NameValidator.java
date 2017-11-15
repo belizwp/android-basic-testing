@@ -9,25 +9,25 @@ import cc.somkiat.basicunittesting.exception.NullNameException;
 public class NameValidator {
 
     public boolean validate(String name) throws BaseValidationException {
-        isNull(name);
-        isEmpty(name);
-        isValidName(name);
+        checkNull(name);
+        checkEmpty(name);
+        checkValidName(name);
         return true;
     }
 
-    public void isNull(String name) throws NullNameException {
+    public void checkNull(String name) throws NullNameException {
         if (name == null) {
             throw new NullNameException("Name is null");
         }
     }
 
-    public void isEmpty(String name) throws EmptyNameException {
+    public void checkEmpty(String name) throws EmptyNameException {
         if (name.trim().isEmpty()) {
             throw new EmptyNameException("Name is empty");
         }
     }
 
-    public void isValidName(String name) throws BaseValidationException {
+    public void checkValidName(String name) throws BaseValidationException {
         String regex = "^[A-Za-z .ก-๙]+$";
         String regEng = "(?=.*[A-Za-z]).*";
         String regTha = "(?=.*[ก-๙]).*";
