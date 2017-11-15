@@ -16,4 +16,9 @@ public class NameValidationPassTest {
         assertTrue("", nameValidator.validate(name));
     }
 
+    @Test
+    public void shortLowerCaseNameShouldPass() throws BaseValidationException {
+        String name = "bell";
+        assertTrue("", nameValidator.validate(name));
+    }
 }
