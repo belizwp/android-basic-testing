@@ -36,6 +36,15 @@ public class NameValidationFailTest {
     }
 
     @Test
+    public void shouldThrowEmptyNameExceptionWhenNameIsEmptySpace() throws BaseValidationException {
+        thrown.expect(EmptyNameException.class);
+        thrown.expectMessage("Name is empty");
+
+        String name = "            ";
+        nameValidator.validate(name);
+    }
+
+    @Test
     public void shouldThrowNameContainNonAlphabetExceptionWhenNameContainNumber() throws BaseValidationException {
         thrown.expect(NameContainsNonAlphabet.class);
         thrown.expectMessage("Name contains non alphabet character");

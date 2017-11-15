@@ -22,7 +22,7 @@ public class NameValidator {
     }
 
     public void isEmpty(String name) throws EmptyNameException {
-        if (name.isEmpty()) {
+        if (name.trim().isEmpty()) {
             throw new EmptyNameException("Name is empty");
         }
     }
