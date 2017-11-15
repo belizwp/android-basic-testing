@@ -60,4 +60,13 @@ public class EmailValidationFailTest {
         String email = "Belize.email.com";
         emailValidator.validate(email);
     }
+
+    @Test
+    public void shouldThrowInvalidEmailExceptionWhenEmailHasDoubleAtSign() throws BaseValidationException {
+        thrown.expect(InvalidEmailException.class);
+        thrown.expectMessage("Email is invalid");
+
+        String email = "belizwp@@live.com";
+        emailValidator.validate(email);
+    }
 }
