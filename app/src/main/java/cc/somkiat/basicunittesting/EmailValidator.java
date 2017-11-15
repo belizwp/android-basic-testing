@@ -7,10 +7,11 @@ import cc.somkiat.basicunittesting.exception.NullEmailException;
 
 public class EmailValidator {
 
-    public void validate(String email) throws BaseValidationException {
+    public boolean validate(String email) throws BaseValidationException {
         checkNull(email);
         checkEmpty(email);
         checkValidEmail(email);
+        return true;
     }
 
     private void checkNull(String email) throws NullEmailException {
@@ -26,7 +27,7 @@ public class EmailValidator {
     }
 
     private void checkValidEmail(String email) throws InvalidEmailException {
-        String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]";
+        String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]";
 
         if (!email.matches(regex)) {
             throw new InvalidEmailException("Email is invalid");
