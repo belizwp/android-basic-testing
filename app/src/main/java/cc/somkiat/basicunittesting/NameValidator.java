@@ -7,10 +7,11 @@ import cc.somkiat.basicunittesting.exception.NullNameException;
 
 public class NameValidator {
 
-    public void validate(String name) throws BaseValidationException {
+    public boolean validate(String name) throws BaseValidationException {
         isNull(name);
         isEmpty(name);
         isNameContainsNonAlphabet(name);
+        return true;
     }
 
     public void isNull(String name) throws NullNameException {
