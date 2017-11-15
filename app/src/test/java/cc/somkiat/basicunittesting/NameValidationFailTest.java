@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 import cc.somkiat.basicunittesting.exception.BaseValidationException;
 import cc.somkiat.basicunittesting.exception.EmptyNameException;
 import cc.somkiat.basicunittesting.exception.NameContainsNonAlphabet;
+import cc.somkiat.basicunittesting.exception.NameMixLangException;
 import cc.somkiat.basicunittesting.exception.NullNameException;
 
 public class NameValidationFailTest {
@@ -61,4 +62,12 @@ public class NameValidationFailTest {
         nameValidator.validate(name);
     }
 
+    @Test
+    public void shouldThrowNameMixLangExceptionWhenNameContainThaiAndEng() throws BaseValidationException {
+        thrown.expect(NameMixLangException.class);
+        thrown.expectMessage("Name contains mix language");
+
+        String name = "Nakarin คัคนัมพร";
+        nameValidator.validate(name);
+    }
 }
