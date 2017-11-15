@@ -33,4 +33,10 @@ public class NameValidationPassTest {
         String name = "BELL";
         assertTrue("", nameValidator.validate(name));
     }
+
+    @Test
+    public void shortUpperAndLowerCaseNameShouldPass() throws BaseValidationException {
+        String name = "Belizwp";
+        assertTrue("", nameValidator.validate(name));
+    }
 }
